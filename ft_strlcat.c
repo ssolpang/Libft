@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 17:58:04 by jkwak             #+#    #+#             */
-/*   Updated: 2021/12/14 17:24:23 by jkwak            ###   ########.fr       */
+/*   Created: 2021/12/14 16:19:16 by jkwak             #+#    #+#             */
+/*   Updated: 2021/12/14 19:43:48 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
+	size_t	len_dst;
+	size_t	len_src;
 	size_t	i;
-	size_t	len;
 
-	if (!dst)
-		return (NULL);
-	len = ft_strlen(src);
-	if (dstsize == 0)
-		return (len);
 	i = 0;
-	while (*(src + i) && i < (dstsize - 1))
+	len_dst = ft_strlen(dst);
+	len_src = ft_strlen(src);
+	if (len_dst >= dstsize)
+		return (len_src + dstsize);
+	else
 	{
-		*(dst + i) = *(src + i);
-		i++;
+		while (*(src + i) && (i < (dstsize - len_dst - 1)))
+		{
+			*(dst + len_dst + i) = *(src + i);
+			i++;
+		}
+		*(dst + len_dst + i) = NULL;
+		return (len_dst + len_src);
 	}
-	*(dst + i) = NULL;
-	return (len);
 }
