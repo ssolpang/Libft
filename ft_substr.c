@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/20 17:01:18 by jkwak             #+#    #+#             */
-/*   Updated: 2021/12/23 22:16:20 by jkwak            ###   ########.fr       */
+/*   Created: 2021/12/28 06:49:04 by jkwak             #+#    #+#             */
+/*   Updated: 2021/12/28 07:11:19 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	char	*str;
+	char	*sub_str;
 
-	str = (char *)s;
-	i = 0;
-	if (!str || c == 0)
+	sub_str = (char *)malloc(sizeof(char) * len + 1);
+	if (!sub_str)
 		return (NULL);
-	while (i < n && *(str + i))
-	{
-		if (*(str + i) == c)
-			return (*(str + i));
-		i++;
-	}
-	return (NULL);
+	sub_str = ft_memchr(s, (int)start, 1);
+	sub_str = ft_memmove(sub_str, sub_str, len);
+	*(sub_str + len) = 0;
+	return (sub_str);
 }
