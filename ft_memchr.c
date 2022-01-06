@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 17:01:18 by jkwak             #+#    #+#             */
-/*   Updated: 2021/12/23 22:16:20 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/05 22:54:36 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (i < n && *(str + i))
 	{
 		if (*(str + i) == c)
-			return (*(str + i));
+			return ((str + i));
 		i++;
 	}
 	return (NULL);

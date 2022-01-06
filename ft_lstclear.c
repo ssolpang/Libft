@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:14:37 by jkwak             #+#    #+#             */
-/*   Updated: 2022/01/04 16:27:08 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/06 03:26:40 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
+	t_list	*list;
 	t_list	*temp;
 
-	lst = *lst;
-	while (lst->next != 0)
+	list = (t_list *)*lst;
+	while (list->next != 0)
 	{
-		temp = lst->next;
-		del(lst);
-		free(lst);
-		lst = temp;
+		temp = list->next;
+		del(list);
+		free(list);
+		list = temp;
 	}
-	lst = 0;
+	list = 0;
 }

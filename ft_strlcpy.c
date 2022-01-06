@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:58:04 by jkwak             #+#    #+#             */
-/*   Updated: 2021/12/14 17:24:23 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/05 22:53:15 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	len;
 
 	if (!dst)
-		return (NULL);
+		return (0);
 	len = ft_strlen(src);
 	if (dstsize == 0)
 		return (len);
@@ -28,6 +28,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 		*(dst + i) = *(src + i);
 		i++;
 	}
-	*(dst + i) = NULL;
+	*(dst + i) = 0;
 	return (len);
 }

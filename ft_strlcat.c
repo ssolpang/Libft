@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 16:19:16 by jkwak             #+#    #+#             */
-/*   Updated: 2021/12/14 19:43:48 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/05 22:53:45 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 			*(dst + len_dst + i) = *(src + i);
 			i++;
 		}
-		*(dst + len_dst + i) = NULL;
+		*(dst + len_dst + i) = 0;
 		return (len_dst + len_src);
 	}
 }

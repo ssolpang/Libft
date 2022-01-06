@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 17:51:02 by jkwak             #+#    #+#             */
-/*   Updated: 2021/12/26 20:28:50 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/05 23:07:13 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 			&& *(needle + j) && ((i + j) < len))
 			j++;
 		if (!*(needle + j))
-			return (*(haystack + i));
+			return ((char *)(haystack + i));
 		i++;
 	}
 	return (NULL);

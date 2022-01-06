@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 08:19:36 by jkwak             #+#    #+#             */
-/*   Updated: 2021/12/29 20:12:52 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/05 23:10:18 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!*s1)
 		return (NULL);
 	if (!*set)
-		return (s1);
+		return ((char *)s1);
 	start = find_start(s1, set);
 	end = find_end(s1, set);
 	new_str = (char *)malloc(sizeof(char) * (end - start + 2));
@@ -77,7 +77,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = 0;
 	while (start <= end)
 	{
-		*(new_str + i) = (s1 + start);
+		*(new_str + i) = *(s1 + start);
 		i++;
 		start++;
 	}

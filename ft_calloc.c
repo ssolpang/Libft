@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 21:33:55 by jkwak             #+#    #+#             */
-/*   Updated: 2021/12/26 23:55:40 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/05 23:07:52 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	*ft_calloc(size_t count, size_t size)
 	mem = malloc(total);
 	if (mem == 0)
 		return (NULL);
-	bzero(mem, total);
+	ft_bzero(mem, total);
 	return (mem);
 }

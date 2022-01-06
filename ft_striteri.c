@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 19:17:26 by jkwak             #+#    #+#             */
-/*   Updated: 2021/12/31 19:35:24 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/06 03:13:58 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	len -= 1;
 	while (len >= 0)
 	{
-		(*f)(len, *(s + len));
+		(*f)(len, (s + len));
 		len--;
 	}
 }
