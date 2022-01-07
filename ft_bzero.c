@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:46:34 by jkwak             #+#    #+#             */
-/*   Updated: 2021/11/25 17:53:26 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/07 17:46:20 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_bzero(void *s, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		*((unsigned char *)s + i) = '0';
+		*((unsigned char *)s + i) = 0;
 		i++;
 	}
 }

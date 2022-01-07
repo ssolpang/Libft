@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 17:51:02 by jkwak             #+#    #+#             */
-/*   Updated: 2022/01/05 23:07:13 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/07 18:37:34 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	i;
 	size_t	j;
 
+	if (*needle == 0)
+		return ((char *)haystack);
 	i = 0;
 	while (i < len && *(haystack + i))
 	{

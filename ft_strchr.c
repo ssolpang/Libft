@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 19:57:30 by jkwak             #+#    #+#             */
-/*   Updated: 2021/12/16 21:08:33 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/07 18:30:08 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
-	if (c == 0)
-		return (NULL);
 	i = 0;
 	while (*(s + i))
 	{
@@ -25,5 +23,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)(s + i));
 		i++;
 	}
+	if (c == 0)
+		return ((char *)(s + i));
 	return (NULL);
 }

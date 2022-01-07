@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 19:44:43 by jkwak             #+#    #+#             */
-/*   Updated: 2021/12/31 19:54:23 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/07 18:52:57 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
+	if (s == 0)
+		return ;
 	write(fd, s, ft_strlen(s));
 }
