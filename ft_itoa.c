@@ -6,13 +6,13 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 14:31:04 by jkwak             #+#    #+#             */
-/*   Updated: 2021/12/30 15:56:00 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/10 20:53:12 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	nbr_len(int n)
+int	nbr_len(long long int n)
 {
 	int	len;
 
@@ -28,7 +28,7 @@ int	nbr_len(int n)
 	return (len);
 }
 
-int	nbr_sign(int n)
+int	nbr_sign(long long int n)
 {
 	if (n > 0)
 		return (1);
@@ -38,24 +38,26 @@ int	nbr_sign(int n)
 
 char	*ft_itoa(int n)
 {
-	char	*nbr;
-	int		len;
-	int		sign;
+	char			*nbr;
+	int				len;
+	int				sign;
+	long long int	nb;
 
-	if (n == 0)
-		return ("0");
-	len = nbr_len(n);
-	sign = nbr_sign(n);
+	nb = (long long int)n;
+	if (nb == 0)
+		return (ft_strdup("0"));
+	len = nbr_len(nb);
+	sign = nbr_sign(nb);
 	nbr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!nbr)
 		return (NULL);
 	*(nbr + len--) = 0;
-	if (n < 0)
-		n = -n;
+	if (nb < 0)
+		nb = -nb;
 	while (len >= 0)
 	{
-		*(nbr + len) = (n % 10) + '0';
-		n = n / 10;
+		*(nbr + len) = (nb % 10) + '0';
+		nb = nb / 10;
 		len--;
 	}
 	if (sign < 0)

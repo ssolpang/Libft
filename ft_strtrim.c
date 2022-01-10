@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 08:19:36 by jkwak             #+#    #+#             */
-/*   Updated: 2022/01/08 13:32:28 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/10 20:41:23 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,66 @@
 
 int	find_start(char const *s1, char const *set)
 {
-	int		i;
-	int		j;
+	int	start;
+	int	i;
 
-	i = 0;
-	while (*(s1 + i))
+	start = 0;
+	while (*(s1 + start))
 	{
-		j = 0;
-		while (*(set + j))
+		i = 0;
+		while (*(set + i))
 		{
-			if (*(s1 + i) == *(set + j))
+			if (*(s1 + start) == *(set + i))
 				break ;
 			else
-				j++;
+				i++;
 		}
-		if (*(set + j) == 0)
-			return (i);
-		i++;
+		if (*(set + i) == 0)
+			return (start);
+		else
+			start++;
 	}
-	return (i);
+	return (start);
 }
 
-int	find_end(char const *s1, char const *set)
+int	find_end(int check, char const *s1, char const *set)
 {
-	int		i;
-	int		j;
+	int	end;
+	int	i;
 
-	i = ft_strlen(s1) - 1;
-	while (*(s1 + i))
+	end = check;
+	while (*(s1 + check))
 	{
-		j = 0;
-		while (*(set + j))
+		i = 0;
+		while (*(set + i))
 		{
-			if (*(s1 + i) == *(set + j))
+			if (*(s1 + check) == *(set + i))
 				break ;
 			else
-				j++;
+				i++;
 		}
-		if (*(set + j) == 0)
-			return (i);
-		i--;
+		if (*(set + i) == 0)
+			end = check;
+		check++;
 	}
-	return (i);
+	return (end);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*new_str;
 	int		start;
 	int		end;
 	int		i;
+	char	*new_str;
 
-	if (!*s1)
+	if (!s1)
 		return (NULL);
-	if (!*set)
-		return ((char *)s1);
+	if (!set)
+		return (ft_strdup(s1));
 	start = find_start(s1, set);
-	end = find_end(s1, set);
+	if (!*(s1 + start))
+		return (ft_strdup(""));
+	end = find_end(start, s1, set);
 	new_str = (char *)malloc(sizeof(char) * (end - start + 2));
 	if (!new_str)
 		return (NULL);
@@ -81,6 +84,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 		start++;
 	}
-	*(new_str + end + 1) = 0;
+	*(new_str + i) = 0;
 	return (new_str);
 }

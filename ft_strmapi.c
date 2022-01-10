@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 18:40:41 by jkwak             #+#    #+#             */
-/*   Updated: 2021/12/31 19:15:48 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/10 20:55:49 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		len;
 	char	*new_str;
 
+	if (!s || !f)
+		return (NULL);
 	len = ft_strlen(s);
 	new_str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!new_str)
