@@ -6,7 +6,7 @@
 #    By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 20:51:12 by jkwak             #+#    #+#              #
-#    Updated: 2022/01/06 22:57:48 by jkwak            ###   ########.fr        #
+#    Updated: 2022/01/11 18:33:54 by jkwak            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,17 @@ RM = rm -f
 
 NAME = libft.a
 
+ifdef IS_BONUS
+	R_OBJS = $(OBJS) $(BONUS_OBJS)
+else
+	R_OBJS = $(OBJS)
+endif
+	
+
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-			ar rcs $(NAME) $(OBJS)
+$(NAME) : $(R_OBJS)
+			ar rcs $(NAME) $(R_OBJS)
 
 clean :
 		$(RM) $(OBJS) $(BONUS_OBJS)
@@ -51,7 +58,7 @@ fclean : clean
 
 re : fclean $(NAME)
 
-bonus : $(OBJS) $(BONUS_OBJS)
-		ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+bonus :
+	IS_BONUS=1 make all
 
 .PHONY : all clean fclean re
