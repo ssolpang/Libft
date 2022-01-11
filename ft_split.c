@@ -6,11 +6,24 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 23:35:42 by jkwak             #+#    #+#             */
-/*   Updated: 2022/01/06 03:13:14 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/11 18:26:01 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	word_clear(char **grp)
+{
+	int	i;
+
+	i = 0;
+	while (*(grp + i))
+	{
+		free(*(grp + i));
+		i++;
+	}
+	free(grp);
+}
 
 int	word_count(char const *s, char c)
 {
@@ -26,7 +39,7 @@ int	word_count(char const *s, char c)
 		else
 		{
 			count++;
-			while (*(s + i) != c)
+			while (*(s + i) && (*(s + i) != c))
 				i++;
 		}	
 	}
@@ -35,26 +48,30 @@ int	word_count(char const *s, char c)
 
 char	**word_list(char **grp, char const *s, char c)
 {
-	int		i;
-	int		count;
-	char	*str;
+	int	i;
+	int	j;
+	int	len;
 
 	i = 0;
-	count = 0;
-	str = ft_strdup(s);
-	while (*(str + i))
+	j = 0;
+	while (*(s + i) && (j < word_count(s, c)))
 	{
-		if (*(str + i) == c)
+		len = 0;
+		while (*(s + i) && (*(s + i) == c))
 			i++;
-		else
+		while (*(s + i) && (*(s + i) != c))
 		{
-			*(grp + count) = (str + i);
-			while (*(str + i) != c)
-				i++;
-			count++;
+			i++;
+			len++;
 		}
+		*(grp + j) = (char *)malloc(sizeof(char) * (len + 1));
+		if (!*(grp + j))
+		{
+			word_clear(grp);
+			return (NULL);
+		}
+		ft_strlcpy(*(grp + (j++)), (s + i - len), len + 1);
 	}
-	*(grp + count) = 0;
 	return (grp);
 }
 
@@ -63,10 +80,15 @@ char	**ft_split(char const *s, char c)
 	int		count;
 	char	**grp;
 
+	if (!s)
+		return (NULL);
 	count = word_count(s, c);
 	grp = (char **)malloc(sizeof(char *) * (count + 1));
 	if (!grp)
 		return (NULL);
 	grp = word_list(grp, s, c);
+	if (!grp)
+		return (NULL);
+	*(grp + count) = NULL;
 	return (grp);
 }
