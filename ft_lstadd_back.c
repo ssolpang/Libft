@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 11:46:41 by jkwak             #+#    #+#             */
-/*   Updated: 2022/01/06 03:23:21 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/01/12 23:56:19 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
-	list = (t_list *)*lst;
-	while (1)
-	{
-		if (list->next == 0)
-		{
-			list->next = new;
-			return ;
-		}
+	list = *lst;
+	while (!(list->next == NULL))
 		list = list->next;
-	}
+	list->next = new;
 }
