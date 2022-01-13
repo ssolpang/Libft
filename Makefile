@@ -6,7 +6,7 @@
 #    By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 20:51:12 by jkwak             #+#    #+#              #
-#    Updated: 2022/01/11 18:33:54 by jkwak            ###   ########.fr        #
+#    Updated: 2022/01/13 15:32:36 by jkwak            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ endif
 all : $(NAME)
 
 $(NAME) : $(R_OBJS)
-			ar rcs $(NAME) $(R_OBJS)
+			ar rc $(NAME) $(R_OBJS)
 
 clean :
 		$(RM) $(OBJS) $(BONUS_OBJS)
